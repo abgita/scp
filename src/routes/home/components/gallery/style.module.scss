@@ -1,0 +1,261 @@
+@import "../../../../responsiveness.scss";
+
+.gallery {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  padding: 20px 0;
+  
+  h2 {
+    color:  black;
+    font-size: 3em;
+    margin: 0;
+    align-self: flex-start;
+  }
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.cont {
+  position: relative;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  z-index: 1;
+
+  padding: 20px 0;
+  margin: 0;
+}
+
+.paintingCont {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 80%;
+  margin: 15px 0;
+}
+
+.painting {
+  padding-top: 15px;
+
+  figure {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  background: white;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.paintingAttribution {
+  display: flex;
+  flex-direction: column;
+
+  display: 100%;
+  font-size: smaller;
+}
+
+.authorsAttribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 5px;
+
+  div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    :last-child {
+      margin-left: 3px;
+    }
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+    
+    margin: 10px;
+    padding: 0;
+
+    border-radius: 32px;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  img:hover {
+    transform: scale(3);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+  }  
+}
+
+.unsplashAttribution {
+  align-self: center;
+  margin: 10px 0 15px 0;
+}
+
+@media screen and (min-width: $mobile2) {
+  .gallery {
+    padding-left: 3%;
+  }
+
+  .paintingCont {
+    width: 100%;
+  }
+
+  .painting {
+    flex-direction: row;
+
+    padding-top: 0;
+
+    figure {
+      width: 200px;
+      height: 200px;
+
+      transform: scale(0.6) translate(0,-50px);
+    }
+  }
+
+  .paintingAttribution {
+    flex: 1;
+  }
+
+  .authorsAttribution {
+    flex: 1;
+    padding-top: 30px;
+    justify-content: center;
+  }
+
+  .unsplashAttribution {
+    align-self: flex-end;
+    margin-right: 15px;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .gallery {
+    width: 80%;
+  }
+
+  .cont {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .paintingCont {
+    width: 280px;
+    margin: 15px 0;
+  }
+  
+  .painting {
+    flex-direction: column;
+
+    figure {
+      width: 100%;
+      height: auto;
+
+      transform: scale(0.85) translate(0,-0px);
+    }
+  }
+
+  .authorsAttribution {
+    padding-top: 0;
+    justify-content: flex-start;
+  }
+
+  .unsplashAttribution {
+    align-self: center;
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: $tablet2) {
+  .gallery {
+    width: 100%;
+    padding-left: 0;
+
+    h2 {
+      margin-left: 65px;
+    }
+  }
+
+  .cont {
+    width: 90%;
+  }
+
+  .paintingCont {
+    width: 350px;
+    margin: 10px;
+  }
+
+  .painting {
+    padding-top: 15px;
+
+    figure {
+      transform: scale(1) translate(0,0);
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .gallery {
+    width: 100%;
+    padding-left: 0;
+
+    h2 {
+      margin-left: 65px;
+    }
+  }
+
+  .cont {
+    width: 80%;
+  }
+
+  .paintingCont {
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: $widescreen) {
+  .gallery {
+    width: $max-content-width;
+
+    h2 {
+      margin-left: 4%;
+    }
+  }
+
+  .cont {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .paintingCont {
+    width: 306px;
+  }
+
+
+  .painting {
+    padding-top: 0;
+  }
+}

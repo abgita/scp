@@ -1,0 +1,172 @@
+@import "../../../../responsiveness.scss";
+
+$foreground: #000000;
+$background: #ffffff;
+
+.hero {
+  width: 100%;
+
+  background: $background;
+  color: $foreground;
+
+  padding: 20px 0 10px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.disclaimer {
+  color:#737373;
+  font-size: small;
+  padding: 0 10px;
+}
+
+.titleCont {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    width: 70%;
+    color: $foreground;
+    line-height: 1.2;
+  }
+}
+
+.marked {
+  background: #64d2ff;
+}
+
+.painting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 0;
+
+  :first-child {
+    margin: 0;
+  }
+
+  .figure, figcaption {
+    margin: 0;
+  }
+  
+  .figure figcaption {
+    font-size: small;
+    color: #757272;
+    margin-top: 1rem;
+  }
+  
+}
+
+.description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: $mobile2) {
+  .titleCont {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title h1 {
+    font-size: 2.3em;
+    width: 5em;
+  }
+
+  .painting {
+    height: 100%;
+    align-items: center;
+  }
+
+  .description {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: $mobile3) {
+  .titleCont {
+    justify-content: space-around;
+  }
+
+  .title h1 {
+    font-size: 2.5em;
+  }
+
+  .description {
+    padding: 0 5%;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .content {
+    width: 80%;
+  }
+
+  .title h1 {
+    font-size: 2.7em;
+    width: 5em;
+  }
+
+  .description {
+    padding: 0 5%;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .content {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .titleCont {
+    flex-direction: row;
+    width: 65%;
+  }
+
+  .title h1 {
+    font-size: 2.5em;
+    width: 5em;
+    margin-right: 10px;
+  }
+
+  .description {
+    margin-left: 10px;
+    margin-right: 40px;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: $widescreen) {
+  .content {
+    width: $max-content-width;
+  }
+
+  .description {
+    margin-left: 30px;
+    margin-right: 0;
+  }
+}
