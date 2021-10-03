@@ -7,3 +7,6 @@ dist-ssr
 .env.development
 .env
 .vscode
+.firebase
+firebase.json
+.firebaserc

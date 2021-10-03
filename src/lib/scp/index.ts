@@ -102,7 +102,9 @@ function setProjection (
   programInfo: ProgramInfo
 ): void {
   const fieldOfView = 45 * toRadians
-  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
+  const canvas = gl.canvas as HTMLElement;
+  
+  const aspect = canvas.clientWidth / canvas.clientHeight
   const zNear = 0.1
   const zFar = 10.0
   const projectionMatrix = mat4.create()

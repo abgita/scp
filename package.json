@@ -4,7 +4,7 @@
   "scripts": {
     "setup": "cd gallery && npm install && npm run fetch -- --force && cd ..",
     "dev": "vite",
-    "build": "setup && tsc && vite build",
+    "build": "npm run setup && tsc && vite build",
     "serve": "vite preview",
     "lint": "ts-standard --fix"
   },
