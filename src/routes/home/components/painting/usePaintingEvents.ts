@@ -1,6 +1,5 @@
 import { useEffect, useState, MouseEvent, TouchEvent, KeyboardEvent, FocusEvent } from 'react'
 import { SCPaintingController } from '../../../../lib/scp/types'
-import clamp from 'lodash.clamp'
 
 type PointerEvent = MouseEvent<HTMLCanvasElement> | TouchEvent<HTMLCanvasElement> | any
 
@@ -70,8 +69,8 @@ export default function usePaintingController (
       const scaleX = 1
       const scaleY = 0.5
 
-      const rotationX = clamp(x + moveStep * scaleX * dx, -scaleX, scaleX)
-      const rotationY = clamp(y + moveStep * scaleY * dy, -scaleY, scaleY)
+      const rotationX = Math.min(Math.max(x + moveStep * scaleX * dx, -scaleX), scaleX);
+      const rotationY = Math.min(Math.max(y + moveStep * scaleY * dy, -scaleY), scaleY)
 
       painting.rotate(rotationX, rotationY)
     }
