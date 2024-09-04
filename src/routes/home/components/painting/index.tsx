@@ -14,6 +14,7 @@ interface PaintingProps {
   width?: number
   height?: number
   autoload?: boolean
+  animate?: boolean
 }
 
 export default function Painting ({
@@ -23,10 +24,11 @@ export default function Painting ({
   image2Thumb,
   width = 400,
   height = 400,
-  autoload = false
+  autoload = false,
+  animate = false
 }: PaintingProps): JSX.Element {
   const { painting, isLoaded, canvasRef, loadingImageRef } = usePaintingLoader(image1, image2, autoload)
-  const paintingEventHandlers = usePaintingController(painting, isLoaded)
+  const paintingEventHandlers = usePaintingController(painting, isLoaded, animate)
 
   const cssSize = {
     width: `${width} px`,
@@ -56,7 +58,7 @@ export default function Painting ({
   }
 
   return (
-    <div className={style.painting} style={cssSize}>
+    <div className={style.painting} style={{...cssSize, cursor: !animate ? 'grab' : 'default'}}>
       <canvas
         aria-label='3D painting viewer. Use the arrows keys or drag with a pointer to move'
         className={style.canvas}
@@ -73,11 +75,7 @@ export default function Painting ({
           image2: image2Thumb,
           lazyLoading: !autoload
         }}
-      /> : <button
-                     className={style.fullscreenButton}
-                     aria-label='View painting in fullscreen'
-                     onClick={onClick}
-                        />}
+      /> : (!animate && <button className={style.fullscreenButton} aria-label='View painting in fullscreen' onClick={onClick}/>)}
     </div>
   )
 }

@@ -9,7 +9,6 @@
     "lint": "ts-standard --fix"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.1",
     "gl-matrix": "^3.3.0",
     "lodash.clamp": "^4.0.3",
     "react": "^17.0.0",
@@ -18,8 +17,6 @@
   },
   "devDependencies": {
     "@axe-core/react": "^4.2.2",
-    "@testing-library/react": "^12.0.0",
-    "@types/gl-matrix": "^3.2.0",
     "@types/lodash.clamp": "^4.0.6",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",

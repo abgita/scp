@@ -2,7 +2,6 @@ interface Model {
   vertexCount: number
 
   positions: number[]
-  normals: number[]
   texels: number[]
   indices: number[]
 }
@@ -11,7 +10,6 @@ interface ModelBuffers {
   vertexCount: number
 
   positions: WebGLBuffer
-  normals: WebGLBuffer
   texels: WebGLBuffer
   indices: WebGLBuffer
 }

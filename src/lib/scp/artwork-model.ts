@@ -66,36 +66,6 @@ function getVerticesPositions (numStrips: number, stripsEnds: StripsEnds): numbe
   return positions
 }
 
-function getVerticesNormals (numStrips: number): number[] {
-  const verticesPerQuad = 4
-  const componentsPerVertex = 3
-  const stride = verticesPerQuad * componentsPerVertex
-
-  const normals = new Array(numStrips * stride)
-
-  const setVertex = (offset: number, x: number, y: number, z: number): void => {
-    normals[offset] = x
-    normals[offset + 1] = y
-    normals[offset + 2] = z
-  }
-
-  for (let i = 0; i < normals.length; i += stride) {
-    const strip = i === 0 ? 0 : i / stride
-    const left = strip % 2 === 0
-
-    const nx = left ? -0.5 : 0.5
-    const ny = 0
-    const nz = 1
-
-    setVertex(i, nx, ny, nz)
-    setVertex(i + 3, nx, ny, nz)
-    setVertex(i + 6, nx, ny, nz)
-    setVertex(i + 9, nx, ny, nz)
-  }
-
-  return normals
-}
-
 function getVerticesTexels (numStrips: number, stripsEnds: StripsEnds): number[] {
   const verticesPerQuad = 4
   const componentsPerVertex = 2
@@ -153,7 +123,6 @@ function getModel (numStrips = 512): Model {
   const stripsEnds = getStripsEnds(numStrips)
 
   const positions = getVerticesPositions(numStrips, stripsEnds)
-  const normals = getVerticesNormals(numStrips)
   const texels = getVerticesTexels(numStrips, stripsEnds)
   const indices = getIndices(vertexCount)
 
@@ -161,7 +130,6 @@ function getModel (numStrips = 512): Model {
     vertexCount,
 
     positions,
-    normals,
     texels,
     indices
   }

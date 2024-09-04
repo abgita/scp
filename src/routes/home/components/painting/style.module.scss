@@ -13,7 +13,6 @@
 
 .canvas {
   border-radius: 8px;
-  cursor: move;
   border: 2px solid transparent;
   outline: none;
 }
@@ -51,8 +50,8 @@
 
 .fullscreenButton {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 10px;
+  bottom: 10px;
   margin: 0;
   width: 32px;
   height: 32px;
@@ -60,6 +59,7 @@
   border: 1px solid black;
   border-radius: 8px;
   background-image: url('/assets/images/full.svg');
+  background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(255,255,255,1);
@@ -67,6 +67,6 @@
 }
 
 .fullscreenButton:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(180,180,180,1);
   box-shadow: 0 4px 6px 1px rgba(0,0,0,0.3);
 }

@@ -12,20 +12,15 @@ const toRadians = Math.PI / 180.0
 
 function setModelBuffers (gl: WebGLRenderingContext, model: Model): ModelBuffers | null {
   const positionsBuffer = gl.createBuffer()
-  const normalsBuffer = gl.createBuffer()
   const texelsBuffer = gl.createBuffer()
   const indicesBuffer = gl.createBuffer()
 
   if (positionsBuffer == null) return null
-  if (normalsBuffer == null) return null
   if (texelsBuffer == null) return null
   if (indicesBuffer == null) return null
 
   gl.bindBuffer(gl.ARRAY_BUFFER, positionsBuffer)
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.positions), gl.STATIC_DRAW)
-
-  gl.bindBuffer(gl.ARRAY_BUFFER, normalsBuffer)
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.normals), gl.STATIC_DRAW)
 
   gl.bindBuffer(gl.ARRAY_BUFFER, texelsBuffer)
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.texels), gl.STATIC_DRAW)
@@ -37,7 +32,6 @@ function setModelBuffers (gl: WebGLRenderingContext, model: Model): ModelBuffers
     vertexCount: model.vertexCount,
 
     positions: positionsBuffer,
-    normals: normalsBuffer,
     texels: texelsBuffer,
     indices: indicesBuffer
   }
@@ -142,7 +136,6 @@ function drawModel (
   buffers: ModelBuffers
 ): void {
   webgl.setVertexAttribPointer(gl, programInfo.attribLocations.a_xyzt, buffers.positions, 4)
-  webgl.setVertexAttribPointer(gl, programInfo.attribLocations.a_normal, buffers.normals, 3)
   webgl.setVertexAttribPointer(gl, programInfo.attribLocations.a_uv, buffers.texels, 2)
 
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices)

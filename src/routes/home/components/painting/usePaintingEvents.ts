@@ -19,7 +19,8 @@ type PaintingControllerEventHandlers = {
 
 export default function usePaintingController (
   painting: SCPaintingController,
-  isLoaded: boolean
+  isLoaded: boolean,
+  animate: boolean = false
 ): PaintingControllerEventHandlers {
   const [events, setEvents] = useState<PaintingControllerEventHandlers>({})
 
@@ -123,6 +124,39 @@ export default function usePaintingController (
       resumeMove = false
     }
 
+    let step = 0
+    let requestAnimationHandle: number | null = null
+
+    const toRadians = Math.PI / 180.0
+    let initialX: number | null = null;
+    let initialY: number | null = null;
+    
+    let rotateBackAndForth = () => {
+      if (!painting) return
+
+      if (initialX == null || initialY == null) {
+        const { x, y } = painting.getRotation()
+
+        initialX = x;
+        initialY = y;
+      }
+
+      step = ++step % Infinity;
+
+      let s = Math.sin(step * 0.005);
+
+      const dx = 35 * s * toRadians;
+      const dy = -3 * Math.abs(s) * toRadians;
+
+      painting.rotate(initialX + dx, initialY + dy);
+
+      requestAnimationHandle = requestAnimationFrame(rotateBackAndForth)
+    };
+
+    if (animate) {
+      rotateBackAndForth();
+    }
+
     setEvents({
       onMouseDown: onDown,
       onMouseMove: onMove,
@@ -135,6 +169,12 @@ export default function usePaintingController (
       onBlur: onLeave,
       onKeyDown: onKeyboardMove
     })
+
+    return () => {
+      if (requestAnimationHandle) {
+        cancelAnimationFrame(requestAnimationHandle)
+      }
+    }
   }, [painting, isLoaded])
 
   return events

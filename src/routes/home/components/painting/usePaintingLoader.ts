@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react'
+import React, { useEffect, useReducer, useRef } from 'react'
 import { SCPaintingController } from '../../../../lib/scp/types'
 import { setup } from '../../../../lib/scp'
 

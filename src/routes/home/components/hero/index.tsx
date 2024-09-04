@@ -24,6 +24,7 @@ export default function Hero (): JSX.Element {
                 image1Thumb={image1}
                 image2Thumb={image2}
                 autoload
+                animate
               />
               <figcaption>Beauty versus Intelligence (Marilyb/Einstein)</figcaption>
             </figure>

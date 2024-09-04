@@ -13,14 +13,12 @@ function getModel (): Model {
     0.5, -0.5, pz, pt
   ]
 
-  const normals = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]
   const texels = [0, 1, 0, 0, 1, 0, 1, 1]
 
   return {
     vertexCount: indices.length,
 
     positions,
-    normals,
     texels,
     indices
   }
