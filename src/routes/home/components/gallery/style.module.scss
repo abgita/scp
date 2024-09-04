@@ -50,6 +50,12 @@ ul {
 .painting {
   padding-top: 15px;
 
+  background: white;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+
   figure {
     margin: 0;
     width: 100%;
@@ -58,12 +64,6 @@ ul {
     flex-direction: column;
     align-items: center;
   }
-
-  background: white;
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
 }
 
 .paintingAttribution {
