@@ -14,10 +14,10 @@ export function PaintingBox ({ images, links, authors }: PaintingType): JSX.Elem
         <Painting
           width={300}
           height={300}
-          image1={images[0].painting}
-          image2={images[1].painting}
-          image1Thumb={images[0].thumb}
-          image2Thumb={images[1].thumb}
+          image1={images[0].directUrl ?? images[0].painting}
+          image2={images[1].directUrl ?? images[1].painting}
+          image1Thumb={images[0].directUrl ?? images[0].thumb}
+          image2Thumb={images[1].directUrl ?? images[1].thumb}
           autoload={false}
         />
       </figure>
@@ -25,13 +25,13 @@ export function PaintingBox ({ images, links, authors }: PaintingType): JSX.Elem
       <section className={style.paintingAttribution}>
         <div className={style.authorsAttribution}>
           <div>
-            <img src={images[0].thumb} loading='lazy' alt='' />
+            <img src={images[0].directUrl ?? images[0].thumb} loading='lazy' alt='' />
             <span>Left photo by</span>
             <UnsplashLink url={links[0]} text={authors[0]} />
           </div>
 
           <div>
-            <img src={images[1].thumb} loading='lazy' alt='' />
+            <img src={images[1].directUrl ?? images[1].thumb} loading='lazy' alt='' />
             <span>Right photo by</span>
             <UnsplashLink url={links[1]} text={authors[1]} />
           </div>

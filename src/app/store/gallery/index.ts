@@ -1,8 +1,9 @@
 import { StoreonModule } from 'storeon'
 
 export interface ImageDefintion {
-  thumb: string
-  painting: string
+  directUrl?: string
+  thumb?: string
+  painting?: string
 }
 
 export interface Painting {
